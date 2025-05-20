@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public enum CommonErrorCode implements ApiCode{
+public enum CommonErrorCode implements ErrorCode {
 
     // 400
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "잘못된 요청입니다."),
