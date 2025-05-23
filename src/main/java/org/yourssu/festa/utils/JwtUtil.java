@@ -49,6 +49,14 @@ public class JwtUtil implements InitializingBean {
                 .compact();
     }
 
+    public Claims getTokenBody(final String token){
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
     @Override
     public void afterPropertiesSet() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
