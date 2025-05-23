@@ -53,7 +53,7 @@ public class JwtUtil implements InitializingBean {
         return Jwts.parser()
                 .setSigningKey(secretKey)
                 .build()
-                .parseClaimsJws(token)
+                .parseClaimsJws(token)// 여기서 예외 발생
                 .getBody();
     }
 
