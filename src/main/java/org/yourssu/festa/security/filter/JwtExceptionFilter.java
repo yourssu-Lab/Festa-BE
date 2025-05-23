@@ -28,41 +28,23 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
     protected void doFilterInternal(
             @NonNull final HttpServletRequest request,
             @NonNull final HttpServletResponse response,
-            @NonNull final FilterChain filterChain) throws ServletException, IOException {
+            @NonNull final FilterChain filterChain) throws IOException,ServletException {
         try {
             filterChain.doFilter(request, response);
         } catch (MalformedJwtException e) {
-            handleException(response, AuthErrorCode.TOKEN_MALFORMED_ERROR, e);
+            request.setAttribute("exception", AuthErrorCode.TOKEN_MALFORMED_ERROR);
         } catch (IllegalArgumentException e) {
-            handleException(response, AuthErrorCode.TOKEN_TYPE_ERROR, e);
+            request.setAttribute("exception", AuthErrorCode.TOKEN_TYPE_ERROR);
         } catch (ExpiredJwtException e) {
-            handleException(response, AuthErrorCode.EXPIRED_TOKEN_ERROR, e);
+            request.setAttribute("exception", AuthErrorCode.EXPIRED_TOKEN_ERROR);
         } catch (UnsupportedJwtException e) {
-            handleException(response, AuthErrorCode.TOKEN_UNSUPPORTED_ERROR, e);
+            request.setAttribute("exception", AuthErrorCode.TOKEN_UNSUPPORTED_ERROR);
         } catch (JwtException e) {
-            handleException(response, AuthErrorCode.TOKEN_UNKNOWN_ERROR, e);
+            request.setAttribute("exception", AuthErrorCode.TOKEN_UNKNOWN_ERROR);
         } catch (CustomException e) {
-            handleException(response, e.getErrorCode(), e);
+            request.setAttribute("exception", e.getErrorCode());
         } catch (Exception e) {
-            handleException(response, CommonErrorCode.INTERNAL_SERVER_ERROR, e);
+            request.setAttribute("exception", CommonErrorCode.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    private void handleException(
-            HttpServletResponse response,
-            ErrorCode errorCode,
-            Exception e
-    ) throws IOException {
-
-        response.setStatus(errorCode.getHttpStatus().value());
-        response.setContentType("application/json;charset=UTF-8");
-
-        ApiResponse<?> baseResponse = ApiResponse.onFailure(errorCode);
-
-        // JSON 직렬화 후 응답
-        response.getWriter().write(
-                objectMapper.writeValueAsString(baseResponse)
-        );
-
     }
 }

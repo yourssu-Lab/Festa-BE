@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.yourssu.festa.security.filter.JwtAuthenticationFilter;
 import org.yourssu.festa.security.filter.JwtExceptionFilter;
+import org.yourssu.festa.security.handler.JwtAuthenticationEntryPoint;
 import org.yourssu.festa.utils.JwtUtil;
 
 @Configuration
@@ -22,6 +23,7 @@ public class SecurityConfig {
 
     private final JwtUtil jwtUtil;
     private final ObjectMapper objectMapper;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     public static final String[] AUTH_WHITELIST = {
             "/api/v1/auth/signin",
@@ -33,8 +35,8 @@ public class SecurityConfig {
 
     @Bean
     public JwtExceptionFilter jwtExceptionFilter() {
-        // 생성자에 objectMapper를 넘겨줌
-        return new JwtExceptionFilter(objectMapper);
+        return new JwtExceptionFilter(objectMapper); // 생성자에 objectMapper를 넘겨줌
+
     }
 
     @Bean
