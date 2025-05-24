@@ -1,6 +1,7 @@
 package org.yourssu.festa.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.yourssu.festa.domain.enums.DayNum;
@@ -8,7 +9,7 @@ import org.yourssu.festa.domain.enums.DayPeriod;
 
 @Entity
 @Table(name = "booth")
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class BoothEntity {
 

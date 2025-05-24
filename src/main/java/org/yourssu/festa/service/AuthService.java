@@ -3,6 +3,7 @@ package org.yourssu.festa.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.yourssu.festa.domain.Booth;
+import org.yourssu.festa.domain.BoothEntity;
 import org.yourssu.festa.dto.LoginRequest;
 import org.yourssu.festa.dto.LoginResponse;
 import org.yourssu.festa.utils.JwtUtil;
@@ -14,7 +15,8 @@ public class AuthService {
     private final JwtUtil jwtUtil;
 
     public LoginResponse login(LoginRequest request){
-        Booth booth = boothReader.findBySerialNumAndBoothNum(request.serialNumber(), request.boothNumber());
+        BoothEntity boothEntity = boothReader.findBySerialNumAndBoothNum(request.serialNumber(), request.boothNumber());
+        Booth booth = Booth.fromEntity(boothEntity);
         return jwtUtil.generateToken(booth.getId());
     }
 }
