@@ -1,6 +1,7 @@
 package org.yourssu.festa.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.yourssu.festa.domain.enums.DayNum;
 import org.yourssu.festa.domain.enums.DayPeriod;
@@ -8,6 +9,7 @@ import org.yourssu.festa.domain.enums.DayPeriod;
 @Entity
 @Table(name = "booth")
 @NoArgsConstructor
+@Getter
 public class BoothEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +26,9 @@ public class BoothEntity {
 
     @Enumerated(EnumType.STRING)
     private DayPeriod dayPeriod;
+
+    @Column(name = "booth_num")
+    private int boothNum;
 
     @Column
     private String description;
