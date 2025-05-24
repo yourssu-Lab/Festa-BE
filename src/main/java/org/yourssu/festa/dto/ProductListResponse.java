@@ -7,7 +7,7 @@ import java.util.List;
 public record ProductListResponse(
         List<ProductResponse> productList
 ) {
-    public static ProductListResponse from(List<ProductResponse> productList){
+    public static ProductListResponse of(List<ProductResponse> productList){
         return new ProductListResponse(productList);
     }
 }

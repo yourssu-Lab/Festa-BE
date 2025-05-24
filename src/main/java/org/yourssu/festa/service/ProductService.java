@@ -17,6 +17,6 @@ public class ProductService {
     public ProductListResponse getAllProduct(Long boothId){
         List<Product> productList = productReader.getAllByBoothId(boothId).stream()
                 .map(Product::fromEntity).toList();
-        return ProductListResponse.from(productList.stream().map(ProductResponse::from).toList());
+        return ProductListResponse.of(productList.stream().map(ProductResponse::from).toList());
     }
 }
