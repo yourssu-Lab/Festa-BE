@@ -30,7 +30,8 @@ public class SecurityConfig {
             "/api/booths/{boothId}",
             "/api/booths",
             "/api/booths/{boothId}/products",
-            "/api/storage/upload"
+            "/api/storage/upload",
+            "/h2-console/**"
     };
 
     @Bean
@@ -42,7 +43,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/h2-console/**", "/api/booths/**")
+                )
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.sameOrigin()) //h2/console 띄우기 위해 필요
+                )
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .sessionManagement(sessionManagement ->

@@ -1,5 +1,6 @@
 package org.yourssu.festa.common.advice;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingRequestHeaderException;
@@ -12,6 +13,7 @@ import org.yourssu.festa.common.response.ApiResponse;
 import org.yourssu.festa.exception.CustomException;
 
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CustomException.class)
@@ -44,6 +46,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleUnexpectedException(Exception e) {
+        log.error("Unhandled error occurred", e);
         ErrorCode errorCode = CommonErrorCode.INTERNAL_SERVER_ERROR;
         return ResponseEntity
                 .status(errorCode.getHttpStatus())
