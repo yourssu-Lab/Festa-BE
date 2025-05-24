@@ -11,6 +11,6 @@ public record ProductResponse(
         String imgUrl
 ) {
     public static ProductResponse from(Product product){
-        return new ProductResponse(product.getId(), product.getName(), product.getPrice(), product.getDescription(), product.isSoldout(), product.getImgUrl());
+        return new ProductResponse(product.id(), product.name(), product.price(), product.description(), product.soldout(), product.imgUrl());
     }
 }

@@ -13,10 +13,19 @@ import java.util.List;
 public class ProductService {
 
     private final ProductReader productReader;
+    private final BoothReader boothReader;
 
     public ProductListResponse getAllProduct(Long boothId){
-        List<Product> productList = productReader.getAllByBoothId(boothId).stream()
-                .map(Product::fromEntity).toList();
-        return ProductListResponse.of(productList.stream().map(ProductResponse::from).toList());
+        boothReader.findById(boothId);
+
+        List<Product> productList = productReader.getAllByBoothId(boothId)
+                .stream()
+                .map(Product::toDomain)
+                .toList();
+
+        return ProductListResponse.of(
+                productList.stream().map(ProductResponse::from).toList()
+        );
+
     }
 }

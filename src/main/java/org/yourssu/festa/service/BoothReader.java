@@ -22,6 +22,5 @@ public class BoothReader {
     public BoothEntity findById(Long id){
         return boothRepository.findById(id)
                 .orElseThrow(() -> new CustomException(BoothErrorCode.BOOTH_NOT_FOUND));
-
     }
 }

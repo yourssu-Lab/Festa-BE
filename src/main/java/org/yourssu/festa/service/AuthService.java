@@ -16,7 +16,7 @@ public class AuthService {
 
     public LoginResponse login(LoginRequest request){
         BoothEntity boothEntity = boothReader.findBySerialNumAndBoothNum(request.serialNumber(), request.boothNumber());
-        Booth booth = Booth.fromEntity(boothEntity);
-        return jwtUtil.generateToken(booth.getId());
+        Booth booth = Booth.toDomain(boothEntity);
+        return jwtUtil.generateToken(booth.id());
     }
 }
