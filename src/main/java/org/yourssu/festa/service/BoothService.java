@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.yourssu.festa.domain.Booth;
 import org.yourssu.festa.domain.BoothImage;
+import org.yourssu.festa.domain.enums.DayPeriod;
 import org.yourssu.festa.dto.BoothDetailResponse;
+import org.yourssu.festa.dto.BoothPreviewResponse;
 import org.yourssu.festa.reader.BoothImageReader;
 import org.yourssu.festa.reader.BoothReader;
 
@@ -20,7 +22,9 @@ public class BoothService {
     private final BoothImageReader boothImageReader;
 
     public BoothDetailResponse getBoothDetail(Long boothId){
-        Booth booth = Booth.toDomain(boothReader.findById(boothId));
+        Booth booth = Booth.toDomain(
+                boothReader.findById(boothId)
+        );
 
         List<BoothImage> boothImageList =  boothImageReader.getAllByBoothId(boothId)
                 .stream()
@@ -28,5 +32,17 @@ public class BoothService {
                 .toList();
 
         return BoothDetailResponse.from(booth, boothImageList);
+    }
+
+    public BoothPreviewResponse getBoothPreview(int boothNum, int dayNum, DayPeriod dayPeriod){
+        Booth booth = Booth.toDomain(
+                boothReader.findByBoothNumAndDay(boothNum, dayNum, dayPeriod)
+        );
+
+        BoothImage boothImage =  BoothImage.toDomain(
+                boothImageReader.getFirstByBoothId(booth.id())
+        );
+
+        return BoothPreviewResponse.from(booth, boothImage);
     }
 }
