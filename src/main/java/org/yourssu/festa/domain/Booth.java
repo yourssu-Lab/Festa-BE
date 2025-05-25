@@ -1,7 +1,6 @@
 package org.yourssu.festa.domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.yourssu.festa.domain.entity.BoothEntity;
 import org.yourssu.festa.domain.enums.DayNum;
 import org.yourssu.festa.domain.enums.DayPeriod;
 

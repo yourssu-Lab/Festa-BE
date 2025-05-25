@@ -1,30 +1,15 @@
-package org.yourssu.festa.domain;
+package org.yourssu.festa.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "product")
-@Getter
+@Table(name = "booth_img")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductEntity {
+public class BoothImageEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
-    private String name;
-
-    @Column
-    private int price;
-
-    @Column
-    private String description;
-
-    @ColumnDefault("false")
-    private boolean soldout;
 
     @Column(name = "img_url")
     private String imgUrl;

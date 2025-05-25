@@ -1,4 +1,4 @@
-package org.yourssu.festa.domain;
+package org.yourssu.festa.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

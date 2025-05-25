@@ -1,8 +1,7 @@
 package org.yourssu.festa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.yourssu.festa.domain.BoothEntity;
-import org.yourssu.festa.domain.ProductEntity;
+import org.yourssu.festa.domain.entity.ProductEntity;
 
 import java.util.List;
 

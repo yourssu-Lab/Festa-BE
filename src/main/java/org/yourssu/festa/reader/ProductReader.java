@@ -1,12 +1,8 @@
-package org.yourssu.festa.service;
+package org.yourssu.festa.reader;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.yourssu.festa.common.code.BoothErrorCode;
-import org.yourssu.festa.domain.Product;
-import org.yourssu.festa.domain.ProductEntity;
-import org.yourssu.festa.exception.CustomException;
-import org.yourssu.festa.repository.BoothRepository;
+import org.yourssu.festa.domain.entity.ProductEntity;
 import org.yourssu.festa.repository.ProductRepository;
 
 import java.util.List;

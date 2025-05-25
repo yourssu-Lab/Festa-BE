@@ -3,9 +3,10 @@ package org.yourssu.festa.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.yourssu.festa.domain.Booth;
-import org.yourssu.festa.domain.BoothEntity;
+import org.yourssu.festa.domain.entity.BoothEntity;
 import org.yourssu.festa.dto.LoginRequest;
 import org.yourssu.festa.dto.LoginResponse;
+import org.yourssu.festa.reader.BoothReader;
 import org.yourssu.festa.utils.JwtUtil;
 
 @Service

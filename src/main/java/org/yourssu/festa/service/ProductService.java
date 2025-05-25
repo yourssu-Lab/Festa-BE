@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.yourssu.festa.domain.Product;
 import org.yourssu.festa.dto.ProductListResponse;
 import org.yourssu.festa.dto.ProductResponse;
+import org.yourssu.festa.reader.BoothReader;
+import org.yourssu.festa.reader.ProductReader;
 
 import java.util.List;
 
