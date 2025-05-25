@@ -2,9 +2,11 @@ package org.yourssu.festa.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @Table(name = "booth_img")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoothImageEntity {
