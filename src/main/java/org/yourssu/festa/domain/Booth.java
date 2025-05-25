@@ -5,25 +5,17 @@ import lombok.RequiredArgsConstructor;
 import org.yourssu.festa.domain.enums.DayNum;
 import org.yourssu.festa.domain.enums.DayPeriod;
 
-@Getter
-@RequiredArgsConstructor
-public class Booth {
+public record Booth(
+        Long id,
+        String name,
+        int serialNum,
+        DayNum dayNum,
+        DayPeriod dayPeriod,
+        int boothNum,
+        String description
+) {
 
-    private final Long id;
-
-    private final String name;
-
-    private final int serialNum;
-
-    private final DayNum dayNum;
-
-    private final DayPeriod dayPeriod;
-
-    private final int boothNum;
-
-    private final String description;
-
-    public static Booth fromEntity(BoothEntity boothEntity){
+    public static Booth toDomain(BoothEntity boothEntity){
         return new Booth(boothEntity.getId(), boothEntity.getName(), boothEntity.getSerialNum(), boothEntity.getDayNum(), boothEntity.getDayPeriod(), boothEntity.getBoothNum(), boothEntity.getDescription());
     }
 }

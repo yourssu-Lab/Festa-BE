@@ -1,12 +1,15 @@
 package org.yourssu.festa.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "product")
-@NoArgsConstructor
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,8 +29,7 @@ public class ProductEntity {
     @Column(name = "img_url")
     private String imgUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "booth_id")
-    private BoothEntity boothEntity;
+    @Column(name = "booth_id", nullable = false)
+    private Long boothId;
 
 }
