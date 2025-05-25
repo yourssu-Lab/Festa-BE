@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BoothService {
+public class StorageService {
     private final AmazonS3Manager amazonS3Manager;
 
     @Transactional

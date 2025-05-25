@@ -10,19 +10,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.yourssu.festa.common.code.CommonSuccessCode;
 import org.yourssu.festa.common.response.ApiResponse;
 import org.yourssu.festa.dto.ImageResponse;
-import org.yourssu.festa.service.BoothService;
+import org.yourssu.festa.service.StorageService;
 
 import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
-public class BoothController {
+@RequestMapping("/api/storage")
+public class StorageController {
 
-    private final BoothService boothService;
+    private final StorageService boothService;
 
-    @PostMapping("/storage/upload")
+    @PostMapping("/upload")
     public ResponseEntity<ApiResponse<ImageResponse>> uploadFile(
             @RequestPart("file") List<MultipartFile> multipartFiles
     ) throws IOException {
