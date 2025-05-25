@@ -40,8 +40,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             log.info("claim : {}", claims);
 
-            Long userId = claims.get("userId", Long.class);
-            Authentication auth = new UsernamePasswordAuthenticationToken(userId, null, List.of());
+            Long boothId = claims.get("boothId", Long.class);
+            Authentication auth = new UsernamePasswordAuthenticationToken(boothId, null, List.of());
 
             SecurityContextHolder.getContext().setAuthentication(auth); // 현재 요청에 대한 인증 정보를 Spring Security의 SecurityContext에 저장
 

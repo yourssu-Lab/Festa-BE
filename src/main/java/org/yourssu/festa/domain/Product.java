@@ -1,5 +1,7 @@
 package org.yourssu.festa.domain;
 
+import org.yourssu.festa.dto.ProductRequest;
+
 public record Product(
         Long id,
         String name,
