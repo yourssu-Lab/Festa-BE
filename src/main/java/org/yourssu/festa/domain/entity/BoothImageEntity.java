@@ -19,4 +19,12 @@ public class BoothImageEntity {
     @Column(name = "booth_id", nullable = false)
     private Long boothId;
 
+    public BoothImageEntity(String imgUrl, Long boothId) {
+        this.imgUrl = imgUrl;
+        this.boothId = boothId;
+    }
+
+    public static BoothImageEntity toEntity(String imgUrl, Long boothId) {
+        return new BoothImageEntity(imgUrl, boothId);
+    }
 }

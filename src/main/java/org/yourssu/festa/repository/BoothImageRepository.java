@@ -10,4 +10,6 @@ public interface BoothImageRepository extends JpaRepository<BoothImageEntity, Lo
     List<BoothImageEntity> findAllByBoothId(Long boothId);
 
     Optional<BoothImageEntity> findFirstByBoothIdOrderByIdAsc(Long boothId);
+
+    void deleteAllByBoothId(Long boothId);
 }

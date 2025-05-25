@@ -1,4 +1,4 @@
-package org.yourssu.festa.reader;
+package org.yourssu.festa.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

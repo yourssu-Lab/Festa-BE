@@ -40,4 +40,11 @@ public class BoothEntity {
 
     @Column
     private String summary;
+
+    public void update(String name, String summary, String description, BoothStatus status) {
+        this.name = name;
+        this.summary = summary;
+        this.description = description;
+        this.status = status;
+    }
 }
