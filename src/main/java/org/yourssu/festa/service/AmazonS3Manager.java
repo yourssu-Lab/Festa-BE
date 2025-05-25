@@ -23,9 +23,9 @@ public class AmazonS3Manager {
     private final AmazonS3Client amazonS3Client;
     private final AmazonConfig amazonConfig;
 
-    public List<String> upload(List<MultipartFile> multipartFiles, String dirName) throws IOException{
+    public List<String> upload(List<MultipartFile> multipartFiles) throws IOException{
         List<String> uploadImageUrls = new ArrayList<>();
-
+        String dirName =  amazonConfig.getReviewPath();
         for (MultipartFile multipartFile : multipartFiles){
             File uploadFile = convert(multipartFile)
                     .orElseThrow(() -> new CustomException(BoothErrorCode.BOOTH_UPLOAD_IMAGE_FAILED));
