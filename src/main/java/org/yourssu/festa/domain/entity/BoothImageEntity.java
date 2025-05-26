@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "booth_img")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BoothImageEntity {
+public class BoothImageEntity extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

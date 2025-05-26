@@ -11,7 +11,7 @@ import org.yourssu.festa.dto.ProductRequest;
 @Table(name = "product")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProductEntity {
+public class ProductEntity extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

@@ -12,7 +12,7 @@ import org.yourssu.festa.domain.enums.DayPeriod;
 @Table(name = "booth")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class BoothEntity {
+public class BoothEntity extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
