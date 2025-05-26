@@ -31,7 +31,8 @@ public class SecurityConfig {
             "/api/booths",
             "/api/booths/{boothId}/products",
             "/api/storage/upload",
-            "/h2-console/**"
+            "/h2-console/**",
+            "/health"
     };
 
     public static final String[] SWAGGER_WHITELIST = {
