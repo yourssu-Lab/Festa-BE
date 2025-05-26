@@ -2,8 +2,11 @@ package org.yourssu.festa.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.yourssu.festa.domain.Product;
+import org.yourssu.festa.domain.ProductEntity;
 import org.yourssu.festa.dto.ProductListResponse;
+import org.yourssu.festa.dto.ProductRequest;
 import org.yourssu.festa.dto.ProductResponse;
 
 import java.util.List;
@@ -14,6 +17,7 @@ public class ProductService {
 
     private final ProductReader productReader;
     private final BoothReader boothReader;
+    private final ProductSaver productSaver;
 
     public ProductListResponse getAllProduct(Long boothId){
         boothReader.findById(boothId);
@@ -26,6 +30,11 @@ public class ProductService {
         return ProductListResponse.of(
                 productList.stream().map(ProductResponse::from).toList()
         );
+    }
 
+    @Transactional
+    public void create(Long boothId, ProductRequest request){
+        ProductEntity productEntity = ProductEntity.toEntity(boothId, request);
+        productSaver.save(productEntity);
     }
 }
