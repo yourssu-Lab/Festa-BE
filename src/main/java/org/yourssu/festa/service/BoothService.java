@@ -43,9 +43,11 @@ public class BoothService {
                 boothReader.findByBoothNumAndDay(boothNum, dayNum, dayPeriod)
         );
 
-        BoothImage boothImage =  BoothImage.toDomain(
-                boothImageReader.getFirstByBoothId(booth.id())
-        );
+        BoothImageEntity boothImageEntity = boothImageReader.getFirstByBoothId(booth.id());
+
+        BoothImage boothImage = boothImageEntity != null
+                ? BoothImage.toDomain(boothImageEntity)
+                : null;
 
         return BoothPreviewResponse.from(booth, boothImage);
     }
