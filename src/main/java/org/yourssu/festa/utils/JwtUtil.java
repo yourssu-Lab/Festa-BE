@@ -37,7 +37,7 @@ public class JwtUtil implements InitializingBean {
 
     private String generateToken(final Long id, final Integer expirePeriod) {
         Claims claims = Jwts.claims()
-                .add("userId", id)
+                .add("boothId", id)
                 .build();
 
         return Jwts.builder()

@@ -1,14 +1,15 @@
 package org.yourssu.festa.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 import org.yourssu.festa.common.code.CommonSuccessCode;
 import org.yourssu.festa.common.response.ApiResponse;
 import org.yourssu.festa.dto.ProductListResponse;
+import org.yourssu.festa.dto.ProductRequest;
+import org.yourssu.festa.dto.ProductResponse;
 import org.yourssu.festa.service.ProductService;
 
 @RestController
@@ -24,6 +25,15 @@ public class ProductController {
     ){
         ProductListResponse response = productService.getAllProduct(boothId);
         return ResponseEntity.ok(ApiResponse.onSuccess(CommonSuccessCode.OK, response));
+    }
+
+    @PostMapping("/product")
+    public ResponseEntity<ApiResponse<Void>> postProduct(
+            @AuthenticationPrincipal Long boothId,
+            @Valid @RequestBody ProductRequest request
+    ){
+        productService.create(boothId, request);
+        return ResponseEntity.ok().build();
     }
 
 }

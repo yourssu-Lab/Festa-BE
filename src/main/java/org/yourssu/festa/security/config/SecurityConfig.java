@@ -26,7 +26,7 @@ public class SecurityConfig {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     public static final String[] AUTH_WHITELIST = {
-            "/api/v1/auth/signin",
+            "/api/auth/login",
             "/api/booths/{boothId}",
             "/api/booths",
             "/api/booths/{boothId}/products",
@@ -52,7 +52,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**", "/api/booths/**")
+                        .ignoringRequestMatchers("/h2-console/**", "/api/booths/**", "/api/auth/login")
                 )
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin()) //h2/console 띄우기 위해 필요
