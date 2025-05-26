@@ -1,5 +1,7 @@
 package org.yourssu.festa.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,12 @@ import org.yourssu.festa.service.AuthService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/auth")
+@Tag(name = "Auth", description = "Auth 관련 API입니다.")
 public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
+    @Operation(summary = "로그인", description = "부스 번호와 일련 번호를 통해 로그인 후, JWT accessToken을 발급합니다.")
     public ResponseEntity<ApiResponse<LoginResponse>> login(
             @Valid @RequestBody LoginRequest request
             ){

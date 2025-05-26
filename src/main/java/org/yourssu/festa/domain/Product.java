@@ -1,6 +1,6 @@
 package org.yourssu.festa.domain;
 
-import org.yourssu.festa.dto.ProductRequest;
+import org.yourssu.festa.domain.entity.ProductEntity;
 
 public record Product(
         Long id,

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.yourssu.festa.domain.Product;
-import org.yourssu.festa.domain.ProductEntity;
+import org.yourssu.festa.domain.entity.ProductEntity;
 import org.yourssu.festa.dto.ProductListResponse;
 import org.yourssu.festa.dto.ProductRequest;
 import org.yourssu.festa.dto.ProductResponse;

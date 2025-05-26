@@ -34,10 +34,18 @@ public class SecurityConfig {
             "/h2-console/**"
     };
 
+    public static final String[] SWAGGER_WHITELIST = {
+            "/swagger",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/api-docs",
+            "/api-docs/**",
+            "/v3/api-docs/**"
+    };
+
     @Bean
     public JwtExceptionFilter jwtExceptionFilter() {
         return new JwtExceptionFilter(objectMapper); // 생성자에 objectMapper를 넘겨줌
-
     }
 
     @Bean
@@ -55,6 +63,7 @@ public class SecurityConfig {
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(AUTH_WHITELIST).permitAll()
+                        .requestMatchers(SWAGGER_WHITELIST).permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated()
                 )
