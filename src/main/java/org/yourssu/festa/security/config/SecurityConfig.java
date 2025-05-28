@@ -52,9 +52,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**", "/api/booths/**", "/api/auth/login")
-                )
+                .csrf(csrf -> csrf.disable())  // CSRF 보호 비활성화
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin()) //h2/console 띄우기 위해 필요
                 )
