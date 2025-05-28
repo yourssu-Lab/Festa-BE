@@ -13,7 +13,7 @@ public record BoothRequest(
         String summary,
         @Schema(description = "부스 설명", nullable = false, example = "...")
         String description,
-        @Schema(description = "부스 상태", nullable = false, example = "RELAXED")
+        @Schema(description = "부스 상태", nullable = false, example = "OPEN")
         BoothStatus status,
         @ArraySchema(
                 schema = @Schema(description = "포스터 이미지 URL 목록", example = "https://festa-bucket.s3.ap-northeast-2.amazonaws.com/image1.jpg")

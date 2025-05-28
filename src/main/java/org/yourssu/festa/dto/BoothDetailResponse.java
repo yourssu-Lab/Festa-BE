@@ -15,7 +15,7 @@ public record BoothDetailResponse(
         String summary,
         @Schema(description = "부스 설명", nullable = false, example = "...")
         String description,
-        @Schema(description = "부스 상태", nullable = false, example = "RELAXED")
+        @Schema(description = "부스 상태", nullable = false, example = "OPEN")
         BoothStatus status,
 
         @ArraySchema(
