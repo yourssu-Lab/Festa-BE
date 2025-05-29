@@ -33,11 +33,11 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "booth_id", nullable = false)
     private Long boothId;
 
-    public ProductEntity(String name, int price, String description, String imgUrl, Long boothId) {
+    public ProductEntity(String name, int price, String description, boolean soldout, String imgUrl, Long boothId) {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.soldout = false; // 기본값
+        this.soldout = soldout;
         this.imgUrl = imgUrl;
         this.boothId = boothId;
     }
@@ -47,6 +47,7 @@ public class ProductEntity extends BaseEntity {
                 productRequest.name(),
                 productRequest.price(),
                 productRequest.description(),
+                productRequest.soldout(),
                 productRequest.imgUrl(),
                 boothId
         );
